@@ -11,7 +11,7 @@ import { DragOptions, useDrag } from '../Droppable/useDrag'
 import { unrefElement } from '../utils'
 import { v4 } from 'uuid'
 
-export function useDragItem (el: Ref<HTMLElement | null>, options: {
+export function useSortableItem (el: Ref<HTMLElement | null>, options: {
   type?: string | symbol,
   itemGetter: () => { item: unknown, index: number },
   handle?: Ref<HTMLElement | null>,

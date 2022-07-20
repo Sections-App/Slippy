@@ -14,7 +14,7 @@ const SortableDropArea = Symbol('SortableDropArea')
 
 export type DropRect = { x: number, y: number, width: number, height: number }
 
-export function useDropArea (el: Ref<HTMLElement | null>, options: {
+export function useSortableContainer (el: Ref<HTMLElement | null>, options: {
   accept?: string | symbol | Array<string | symbol>,
   onAdd?: <T>(item: T, index: number) => void,
   onMove?: (oldIndex: number, newIndex: number) => void,
