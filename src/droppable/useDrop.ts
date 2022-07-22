@@ -23,11 +23,22 @@ export function useDrop<T extends object>(el: Ref<HTMLElement | null>, options: 
 } = {}): {[K in keyof T]: Ref<T[K]>} {
   const collect = options.collect || (() => undefined)
 
-  onMounted(() => {
-    unrefElement(el)?.addEventListener('mousemove', handleHover as EventListener)
-    unrefElement(el)?.addEventListener('mouseleave', handleLeave as EventListener)
-    unrefElement(el)?.addEventListener('mouseup', handleUp as EventListener)
-  })
+  let hasBoundListeners = false
+
+  watch(
+    el,
+    v => {
+      if (! v || hasBoundListeners) {
+        return
+      }
+      unrefElement(el)?.addEventListener('mousemove', handleHover as EventListener)
+      unrefElement(el)?.addEventListener('mouseleave', handleLeave as EventListener)
+      unrefElement(el)?.addEventListener('mouseup', handleUp as EventListener)
+
+      hasBoundListeners = true
+    },
+    { immediate: true },
+  )
 
   onBeforeUnmount(() => {
     unrefElement(el)?.removeEventListener('mousemove', handleHover as EventListener)

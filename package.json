@@ -1,6 +1,6 @@
 {
   "name": "@sections/slippy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of Vue composition functions to build drag-n-drop UIs.",
   "repository": "https://github.com/Sections-App/Slippy",
   "author": "Roman Lytvynenko",
